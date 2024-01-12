@@ -316,6 +316,8 @@ class Saper {
 			if (this.size == 8 && this.bombFrequency == 0.1 && (this.easyEightMinutes > this.minutes || (this.easyEightMinutes == this.minutes && this.easyEightSeconds > this.seconds) || (this.easyEightMinutes == 0 && this.easyEightSeconds == 0))){
 				this.easyEightMinutes = this.minutes;
 				this.easyEightSeconds = this.seconds;
+				console.log(this.easyEightMinutes);
+				console.log(this.easyEightSeconds);
 			}
 			if (this.size == 8 && this.bombFrequency == 0.2 && (this.normalEightMinutes > this.minutes || (this.normalEightMinutes == this.minutes && this.normalEightSeconds > this.seconds) || (this.normalEightMinutes == 0 && this.normalEightSeconds == 0))){
 				this.normalEightMinutes = this.minutes;
