@@ -52,7 +52,7 @@ class Saper {
 		this.tileTime = false;
 
 		//лучший результат
-		this.easyEightMinutes = 0;
+		this.easyEightMinutes = 1;
 		this.easyTenMinutes = 0;
 		this.easySixteenMinutes = 0;
 		this.normalEightMinutes = 0;
@@ -313,7 +313,7 @@ class Saper {
 		});
 		if (win) {
 			//проверка на лучшие результаты
-			if (this.size == 8 && this.bombFrequency == 0.1 && (this.easyEightMinutes > this.minutes || (this.easyEightMinutes == this.minutes && this.easyEightSeconds > this.seconds) || (this.easyEightMinutes == null && this.easyEightSeconds == null))){
+			if (this.size == 8 && this.bombFrequency == 0.1 && (this.easyEightMinutes > this.minutes || (this.easyEightMinutes == this.minutes && this.easyEightSeconds > this.seconds) || (this.easyEightMinutes == 0 && this.easyEightSeconds == 0))){
 				this.easyEightMinutes = this.minutes;
 				this.easyEightSeconds = this.seconds;
 				console.log(this.easyEightMinutes);
