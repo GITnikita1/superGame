@@ -1,4 +1,3 @@
-
 class Saper {
 	constructor () {
 		this.checkTile = this.checkTile.bind(this);
@@ -318,6 +317,7 @@ class Saper {
 				this.easyEightSeconds = this.seconds;
 				console.log(this.easyEightMinutes);
 				console.log(this.easyEightSeconds);
+				console.log(155);
 			}
 			if (this.size == 8 && this.bombFrequency == 0.2 && (this.normalEightMinutes > this.minutes || (this.normalEightMinutes == this.minutes && this.normalEightSeconds > this.seconds) || (this.normalEightMinutes == 0 && this.normalEightSeconds == 0))){
 				this.normalEightMinutes = this.minutes;
