@@ -146,6 +146,17 @@ body{
 .settings input[type=radio]{
 	display:none;
 }
+.sizeText {
+	margin: 12px 0;
+	display: inline-block;
+	position: relative;
+	cursor:pointer;
+	font-size: 13px;
+	line-height:18px;
+	transition: .4s all;
+	color: var(--osnov);
+	font-weight: bold!important;
+}
 .settings label {
 	margin: 12px 0;
 	display: inline-block;
