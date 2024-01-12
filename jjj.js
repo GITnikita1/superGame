@@ -470,4 +470,24 @@ window.onload = function() {
 	obj.easySixteenSeconds = JSON.parse(essa);
 	obj.normalSixteenSeconds = JSON.parse(nssa);
 	obj.hardSixteenSeconds = JSON.parse(hssa);
+	if (obj.easyEightMinutes == null){
+		obj.easyEightMinutes = 0;
+		obj.easyTenMinutes = 0;
+		obj.easySixteenMinutes = 0;
+		obj.normalEightMinutes = 0;
+		obj.normalTenMinutes = 0;
+		obj.normalSixteenMinutes = 0;
+		obj.hardEightMinutes = 0;
+		obj.hardTenMinutes = 0;
+		obj.hardSixteenMinutes = 0;
+		obj.easyEightSeconds = 0;
+		obj.easyTenSeconds = 0;
+		obj.easySixteenSeconds = 0;
+		obj.normalEightSeconds = 0;
+		obj.normalTenSeconds = 0;
+		obj.normalSixteenSeconds = 0;
+		obj.hardEightSeconds = 0;
+		obj.hardTenSeconds = 0;
+		obj.hardSixteenSeconds = 0;
+	}
 }
