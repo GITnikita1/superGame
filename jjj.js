@@ -51,7 +51,7 @@ class Saper {
 		this.tileTime = false;
 
 		//лучший результат
-		this.easyEightMinutes = 1;
+		this.easyEightMinutes = 0;
 		this.easyTenMinutes = 0;
 		this.easySixteenMinutes = 0;
 		this.normalEightMinutes = 0;
@@ -70,7 +70,6 @@ class Saper {
 		this.hardEightSeconds = 0;
 		this.hardTenSeconds = 0;
 		this.hardSixteenSeconds = 0;
-		console.log(this.easyEightMinutes);
 	}
 	
 	startTimer = () => {        //таймер, правельная постановка времени
@@ -433,42 +432,42 @@ window.onunload = function() {
 }
 
 //обработка события загрузки страницы
-window.onload = function() {
-    let eema = localStorage.getItem("eem");
-	let nema = localStorage.getItem("nem");
-	let hema = localStorage.getItem("hem");
-	let etma = localStorage.getItem("etm");
-	let ntma = localStorage.getItem("ntm");
-	let htma = localStorage.getItem("htm");
-	let esma = localStorage.getItem("esm");
-	let nsma = localStorage.getItem("nsm");
-	let hsma = localStorage.getItem("hsm");
-	let eesa = localStorage.getItem("ees");
-	let nesa = localStorage.getItem("nes");
-	let hesa = localStorage.getItem("hes");
-	let etsa = localStorage.getItem("ets");
-	let ntsa = localStorage.getItem("nts");
-	let htsa = localStorage.getItem("hts");
-	let essa = localStorage.getItem("ess");
-	let nssa = localStorage.getItem("nss");
-	let hssa = localStorage.getItem("hss");
+// window.onload = function() {
+//     let eema = localStorage.getItem("eem");
+// 	let nema = localStorage.getItem("nem");
+// 	let hema = localStorage.getItem("hem");
+// 	let etma = localStorage.getItem("etm");
+// 	let ntma = localStorage.getItem("ntm");
+// 	let htma = localStorage.getItem("htm");
+// 	let esma = localStorage.getItem("esm");
+// 	let nsma = localStorage.getItem("nsm");
+// 	let hsma = localStorage.getItem("hsm");
+// 	let eesa = localStorage.getItem("ees");
+// 	let nesa = localStorage.getItem("nes");
+// 	let hesa = localStorage.getItem("hes");
+// 	let etsa = localStorage.getItem("ets");
+// 	let ntsa = localStorage.getItem("nts");
+// 	let htsa = localStorage.getItem("hts");
+// 	let essa = localStorage.getItem("ess");
+// 	let nssa = localStorage.getItem("nss");
+// 	let hssa = localStorage.getItem("hss");
 
-    obj.easyEightMinutes = JSON.parse(eema);
-    obj.normalEightMinutes = JSON.parse(nema);
-	obj.hardEightMinutes = JSON.parse(hema);
-	obj.easyTenMinutes = JSON.parse(etma);
-	obj.normalTenMinutes = JSON.parse(ntma);
-	obj.hardTenMinutes = JSON.parse(htma);
-	obj.easySixteenMinutes = JSON.parse(esma);
-	obj.normalSixteenMinutes = JSON.parse(nsma);
-	obj.hardSixteenMinutes = JSON.parse(hsma);
-	obj.easyEightSeconds = JSON.parse(eesa);
-	obj.normalEightSeconds = JSON.parse(nesa);
-	obj.hardEightSeconds = JSON.parse(hesa);
-	obj.easyTenSeconds = JSON.parse(etsa);
-	obj.normalTenSeconds = JSON.parse(ntsa);
-	obj.hardTenSeconds = JSON.parse(htsa);
-	obj.easySixteenSeconds = JSON.parse(essa);
-	obj.normalSixteenSeconds = JSON.parse(nssa);
-	obj.hardSixteenSeconds = JSON.parse(hssa);
-}
+//     obj.easyEightMinutes = JSON.parse(eema);
+//     obj.normalEightMinutes = JSON.parse(nema);
+// 	obj.hardEightMinutes = JSON.parse(hema);
+// 	obj.easyTenMinutes = JSON.parse(etma);
+// 	obj.normalTenMinutes = JSON.parse(ntma);
+// 	obj.hardTenMinutes = JSON.parse(htma);
+// 	obj.easySixteenMinutes = JSON.parse(esma);
+// 	obj.normalSixteenMinutes = JSON.parse(nsma);
+// 	obj.hardSixteenMinutes = JSON.parse(hsma);
+// 	obj.easyEightSeconds = JSON.parse(eesa);
+// 	obj.normalEightSeconds = JSON.parse(nesa);
+// 	obj.hardEightSeconds = JSON.parse(hesa);
+// 	obj.easyTenSeconds = JSON.parse(etsa);
+// 	obj.normalTenSeconds = JSON.parse(ntsa);
+// 	obj.hardTenSeconds = JSON.parse(htsa);
+// 	obj.easySixteenSeconds = JSON.parse(essa);
+// 	obj.normalSixteenSeconds = JSON.parse(nssa);
+// 	obj.hardSixteenSeconds = JSON.parse(hssa);
+// }
