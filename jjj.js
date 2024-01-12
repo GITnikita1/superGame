@@ -1,4 +1,4 @@
-console.clear();
+
 class Saper {
 	constructor () {
 		this.checkTile = this.checkTile.bind(this);
