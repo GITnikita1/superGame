@@ -1,0 +1,182 @@
+:root {
+	--tileSize: 50px;
+	/* --boardSize: 0px; */
+	/**/
+	--fon: #FAEBD7;
+	--osnov: #A5260A;
+}	
+body{
+	background-color: var(--fon);
+}	
+.endscreen {
+	background: var(--fon); /*цвет фона*/
+	padding: 20px;
+	text-align: center;
+	font-size: 40px;
+	display: none;   /* тип отображения "непоказывать" */
+	color: red;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+.endscreen.show {
+	display: block;   /* тип отображения "блок" */
+}
+.endscreen span {     /*Текст выигрыша span находится в js*/
+	color: green;
+}
+.col-center{
+	width: 30%;
+	display: inline-block;
+	text-align: center;
+	background-color: var(--fon);
+}
+.timer{
+	font-size: 3cqmax;
+	margin-left: 36%;
+	margin-right: 25%;
+	background-color: var(--osnov);
+	color: white;
+	border-radius: 20px;
+}
+.col-left {
+	display: inline-block;   /* тип отображения "линейный блок" */
+	width: 33%;
+	text-align: left;
+}		
+.col-right {
+	display: inline-block;  /* тип отображения "линейный блок" */
+	width:33%;
+	text-align: right;      /*выравнивание по правой стороне*/
+}	
+.bestbtn {                   /*кнопка результата*/
+	background-color: var(--osnov);
+	color: white;
+	font-size: 1.5cqmax;
+	border-radius: 30px;
+	padding: 10px;
+	border: none;       /*убрать обводку*/
+}	
+.bestbtn:hover {        /*при наведении на кнопку курсор стрелочка меняется на руку*/
+	cursor: pointer;
+}
+.range:hover {          /*при наведении на кнопку курсор стрелочка меняется на руку*/
+	cursor: pointer;
+}
+.range {    /*кнопки размера поля*/
+	background-color: var(--osnov);
+	border-radius: 100%;
+	color: white;
+	border-color: #480607;
+	width: 25px;
+	height: 25px;
+	display: inline-flex;       /*кнопки распологаются в строковом блоке, это нужно для (ниже)*/
+	justify-content: center;    /*кнопки по центру*/
+}
+.board {
+	background: #e2e2e2;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 10px auto;
+	border: 8px solid #480607;
+	box-sizing: content-box;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2); 
+}
+.board .tile {
+	background: #e2e2e2;
+	width: var(--tileSize);
+	height: var(--tileSize);
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: calc(var(--tileSize) * .8);
+	cursor: pointer;
+	user-select: none;
+	transition: background .2s ease;
+	font-family: Tahoma, sans-serif;
+	box-shadow: inset 0 2px 0 0 #fcfcfc, inset 2px 0 0 0 #fcfcfc, inset 0 -2px 0 0 #c9c9c9, inset -2px 0 0 0 #c9c9c9;
+}
+.board .tile:hover:not(.tile--checked) {
+	background: #efefef;
+}
+.board .tile--checked {
+	background: #d5d5d5;
+	box-shadow: inset 0 1px 0 0 #c9c9c9, inset 1px 0 0 0 #c9c9c9, inset 0 -1px 0 0 #c9c9c9, inset -1px 0 0 0 #c9c9c9;
+}
+.board .tile--checked.tile--bomb:before, .board .tile--checked.tile--bomb:after {
+	opacity: 1;
+}
+.board .tile--checked:hover {
+	cursor: default;
+}
+.board .tile--bomb {
+	font-size: calc(var(--tileSize) * .5);
+}
+.board .tile--flagged {
+	font-size: calc(var(--tileSize) * .5);
+}
+.minesweeper-btn {
+    display: inline-block;
+    padding: 0 40px;
+    height: 50px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-family: 'Roboto Condensed', sans-serif;
+    background-color: var(--osnov);
+    border-radius: 2px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    line-height: 50px;
+    transition: all 0.4s;
+    outline: none !important;
+    border: none;    
+	text-decoration: none;
+}
+.minesweeper-btn:hover {
+    background-color: #333333;
+}
+
+.settings fieldset {
+	border: none;
+}
+
+.settings input[type=radio]{
+	display:none;
+}
+.settings label {
+	margin: 12px 0;
+	display: inline-block;
+	position: relative;
+	cursor:pointer;
+	font-size: 13px;
+	line-height:18px;
+	transition: .4s all;
+	color: var(--osnov);
+	font-weight: bold!important;		
+}
+.settings input[type=radio] + label  {
+	margin: 12px 14px 12px 22px;
+}
+.settings input[type=radio] + label:hover{
+	color:#000;
+}
+.settings input[type=radio] + label:before {
+	position: absolute;
+	content: '';
+	width: 18px;
+	height: 18px;
+	left:-24px;
+	border: 2px solid var(--osnov);
+	border-radius: 2px;
+	transition: background .4s;
+}
+.settings input[type=radio] + label:before {
+	border-radius: 100%;
+}
+.settings input[type=radio]:checked + label:before {
+	background: var(--osnov);
+}	
+/**/	
