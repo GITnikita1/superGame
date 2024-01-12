@@ -70,6 +70,7 @@ class Saper {
 		this.hardEightSeconds = 0;
 		this.hardTenSeconds = 0;
 		this.hardSixteenSeconds = 0;
+		console.log(this.easyEightMinutes);
 	}
 	
 	startTimer = () => {        //таймер, правельная постановка времени
@@ -277,25 +278,6 @@ class Saper {
 		this.tiles.forEach(tile => {
 			let coordinate = tile.getAttribute('data-tile');
 			if (this.bombs.includes(coordinate)) {
-				console.log(this.easyEightMinutes,
-					this.easyTenMinutes,
-					this.easySixteenMinutes,
-					this.normalEightMinutes,
-					this.normalTenMinutes,
-					this.normalSixteenMinutes,
-					this.hardEightMinutes,
-					this.hardTenMinutes,
-					this.hardSixteenMinutes,
-			
-					this.easyEightSeconds,
-					this.easyTenSeconds,
-					this.easySixteenSeconds,
-					this.normalEightSeconds,
-					this.normalTenSeconds,
-					this.normalSixteenSeconds,
-					this.hardEightSeconds,
-					this.hardTenSeconds,
-					this.hardSixteenSeconds)
 				clearInterval(this.interval);
 				tile.classList.remove('tile--flagged');
 				tile.classList.add('tile--checked', 'tile--bomb');
