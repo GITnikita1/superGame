@@ -20,7 +20,7 @@ body{
 .endscreen.show {
 	display: block;   /* тип отображения "блок" */
 }
-.endscreen span {     /*Текст выигрыша span находится в js*/
+.endscreen span {     /*Текст выигрыша span (находится в js)*/
 	color: green;
 }
 .col-center{
@@ -52,7 +52,7 @@ body{
 	color: white;
 	font-size: 1.5cqmax;
 	border-radius: 30px;
-	padding: 10px;
+	padding: 10px;     /*отступ текста внутри своего контейнера*/
 	border: none;       /*убрать обводку*/
 }	
 .bestbtn:hover {        /*при наведении на кнопку курсор стрелочка меняется на руку*/
@@ -73,10 +73,10 @@ body{
 }
 .board {
 	background: #e2e2e2;
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	/* position: relative; */
+	display: flex;        /*расположение элементов в одну строку (типа flex)*/
+	/* flex-direction: row; */
+	flex-wrap: wrap;         /*элементы переносятся на новую строку, если закончилось место*/
 	margin: 10px auto;
 	border: 8px solid #480607;
 	box-sizing: content-box;
@@ -86,8 +86,8 @@ body{
 	background: #e2e2e2;
 	width: var(--tileSize);
 	height: var(--tileSize);
-	position: relative;
-	display: flex;
+	/* position: relative; */
+	display: flex;         /*расположение элементов в одну строку (типа flex)*/
 	justify-content: center;
 	align-items: center;
 	font-size: calc(var(--tileSize) * .8);
