@@ -19,17 +19,10 @@ class Saper {
 
 		this.theBest = document.querySelector('.bestbtn');   //кнопка лучших результатов
 
-
-
-		//this.boardSizeBtn = document.getElementById('boardSize'); //размер плиток(ползунок)
 		this.boardSizeBtn1 = document.getElementById('range1');
 		this.boardSizeBtn2 = document.getElementById('range2');
 		this.boardSizeBtn3 = document.getElementById('range3');
 
-
-
-
-		//this.tileSizeBtn = document.getElementById('tileSize');   //возможно не нужно
 		this.difficultyBtns = document.querySelectorAll('.difficulty');
 
 		this.bombs = [];     //массив бомб

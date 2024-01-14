@@ -1,9 +1,8 @@
 :root {
 	--tileSize: 50px;
-	/* --boardSize: 0px; */
-	/**/
 	--fon: #FAEBD7;
 	--osnov: #A5260A;
+	--naved: #a5260a7b;
 }	
 body{
 	background-color: var(--fon);
@@ -58,9 +57,11 @@ body{
 }	
 .bestbtn:hover {        /*при наведении на кнопку курсор стрелочка меняется на руку*/
 	cursor: pointer;
+	background-color: var(--naved);
 }
 .range:hover {          /*при наведении на кнопку курсор стрелочка меняется на руку*/
 	cursor: pointer;
+	background-color: var(--naved);
 }
 .range {    /*кнопки размера поля*/
 	background-color: var(--osnov);
@@ -131,7 +132,7 @@ body{
 	border-radius: 25px;
 }
 .minesweeper-btn:hover {
-    background-color: #333333;
+    background-color: var(--naved);
 }
 
 .settings fieldset {
@@ -165,9 +166,6 @@ body{
 }
 .settings input[type=radio] + label  {
 	margin: 12px 14px 12px 22px;
-}
-.settings input[type=radio] + label:hover{
-	color:#000;
 }
 .settings input[type=radio] + label:before {
 	position: absolute;
