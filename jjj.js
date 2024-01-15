@@ -153,8 +153,8 @@ class Saper {
 				this.clickTile(tile);
 				
 			});
-		});
-		
+		}); 
+
 		this.numbers.forEach(num => {
 			let coords = num.split(',');
 			let tile = document.querySelectorAll(`[data-tile="${parseInt(coords[0])},${parseInt(coords[1])}"]`)[0];
@@ -162,6 +162,8 @@ class Saper {
 			if (!dataNum) dataNum = 0;
 			tile.setAttribute('data-num', dataNum + 1);
 		});
+
+		if (this.bombs.length < 3) this.setup();  //перезапускает генерацию поля, если количество бомб меньше 3
 	}
 
 
