@@ -10,12 +10,11 @@ class Saper {
 		this.bombFrequency = 0.2; //Частота появления бомб
 		this.tileSize = 50;        //размер плиток
 
-		this.board = document.querySelector('.board'); //список доски(плиток)   //querySelectorAll(...)[0]
-		this.tiles; //массив всех плиток
-		this.boardSize;  //размер игравого поля
+		this.board = document.querySelector('.board'); //переменная содержащая ссылку на элемент - доску 
+		this.tiles; //массив всех плиток (содержит координаты)
 
-		this.restartBtn = document.querySelector('.minesweeper-btn'); //кнопка (Новая игра)      //querySelectorAll(...)[0]
-		this.endscreen = document.querySelector('.endscreen'); //блок результата(победа, поражение)   //querySelectorAll(...)[0]
+		this.restartBtn = document.querySelector('.minesweeper-btn'); //кнопка (Переиграть)  
+		this.endscreen = document.querySelector('.endscreen'); //блок результата(победа, поражение)   
 
 		this.theBest = document.querySelector('.bestbtn');   //кнопка лучших результатов
 
@@ -23,12 +22,12 @@ class Saper {
 		this.boardSizeBtn2 = document.getElementById('range2');
 		this.boardSizeBtn3 = document.getElementById('range3');
 
-		this.difficultyBtns = document.querySelectorAll('.difficulty');
+		this.difficultyBtns = document.querySelectorAll('.difficulty'); //хранит ссылки всех трёх кнопок уровней сложности
 
 		this.bombs = [];     //массив бомб
 		this.numbers = [];   //массив цифр
 		this.numberColors = ['#3498db', '#2ecc71', '#e74c3c', '#9b59b6', '#f1c40f', '#1abc9c', '#34495e', '#7f8c8d',]; //цвета цифр
-		this.endscreenContent = {win: '<span>А ты хорош(а)!</span>', loose: 'Вы были подорваны('};
+		this.endscreenContent = {win: '<span>А ты хорош(а)!</span>', lose: 'Вы были подорваны('};
 
 		this.gameOver = false;
 
@@ -40,7 +39,6 @@ class Saper {
 		this.interval;
 		this.minutes = 0;
 		this.seconds = 0;
-		this.milliseconds = 0;
 		this.tileTime = false;
 
 		//лучший результат
@@ -66,11 +64,9 @@ class Saper {
 	}
 	
 	startTimer = () => {        //таймер, правельная постановка времени
-		this.milliseconds++;
-		if (this.milliseconds > 99){
-			this.seconds++;
+		this.seconds++;
+		if (this.seconds <= 9){
 			this.secondsBlock.innerHTML = '0' + this.seconds;
-			this.milliseconds = 0;
 		}
 		if (this.seconds > 9){
 			this.secondsBlock.innerHTML = this.seconds;
@@ -99,7 +95,6 @@ class Saper {
 		this.tilefirst = false;
 		this.tileTime = false;
 		this.seconds = 0;
-		this.milliseconds = 0;
 		this.minutes = 0;
 		this.secondsBlock.innerHTML = '00';
 		this.minutesBlock.innerHTML = '00';
@@ -114,34 +109,32 @@ class Saper {
 			this.board.appendChild(tile);
 		}
 		this.tiles = document.querySelectorAll('.tile');
-		this.boardSize = Math.sqrt(this.tiles.length);
-		this.board.style.width = this.boardSize * this.tileSize + 'px';
+		this.board.style.width = this.size * this.tileSize + 'px';
 		
 		document.documentElement.style.setProperty('--tileSize', `${this.tileSize}px`);
-		//document.documentElement.style.setProperty('--boardSize', `${this.boardSize * this.tileSize}px`);
 		
 		let x = 0;
 		let y = 0;
-		this.tiles.forEach((tile, i) => {          //forEach вызывает для каждой плитки функцию и смотрит где бомбы, а где цифры
+		this.tiles.forEach((tile) => {          //forEach вызывает для каждой плитки функцию и смотрит где бомбы, а где цифры  (tile, i)
 			tile.setAttribute('data-tile', `${x},${y}`); //устанавливаем атрибут data-tile и приравниваем его ккоординатам x и y
 			
 			let random_boolean = Math.random() < this.bombFrequency;
 			if (random_boolean) {
 				this.bombs.push(`${x},${y}`);
 				if (x > 0) this.numbers.push(`${x-1},${y}`);
-				if (x < this.boardSize - 1) this.numbers.push(`${x+1},${y}`);
+				if (x < this.size - 1) this.numbers.push(`${x+1},${y}`);
 				if (y > 0) this.numbers.push(`${x},${y-1}`);
-				if (y < this.boardSize - 1) this.numbers.push(`${x},${y+1}`);
+				if (y < this.size - 1) this.numbers.push(`${x},${y+1}`);
 				
 				if (x > 0 && y > 0) this.numbers.push(`${x-1},${y-1}`);
-				if (x < this.boardSize - 1 && y < this.boardSize - 1) this.numbers.push(`${x+1},${y+1}`);
+				if (x < this.size - 1 && y < this.size - 1) this.numbers.push(`${x+1},${y+1}`);
 				
-				if (y > 0 && x < this.boardSize - 1) this.numbers.push(`${x+1},${y-1}`);
-				if (x > 0 && y < this.boardSize - 1) this.numbers.push(`${x-1},${y+1}`);
+				if (y > 0 && x < this.size - 1) this.numbers.push(`${x+1},${y-1}`);
+				if (x > 0 && y < this.size - 1) this.numbers.push(`${x-1},${y+1}`);
 			}
 			
-			x++;
-			if (x >= this.boardSize) {
+			x++;  //переход на следующую клетку
+			if (x >= this.size) {  //переход на новую строку плиток на доске
 				x = 0;
 				y++;
 			}
@@ -154,7 +147,7 @@ class Saper {
 			tile.addEventListener('click', () => {   //клик по клетке
 				if (this.tileTime == false) {     //если нажали в первый раз, то запускается время
 					clearInterval(this.interval);
-					this.interval = setInterval(this.startTimer, 10);
+					this.interval = setInterval(this.startTimer, 1000);
 					this.tileTime = true;
 				}
 				this.clickTile(tile);
@@ -192,7 +185,7 @@ class Saper {
 		if (tile.classList.contains('tile--checked') || tile.classList.contains('tile--flagged')) return;
 		let coordinate = tile.getAttribute('data-tile');
 		if (this.bombs.includes(coordinate)) {
-			if (this.tilefirst == false) {             //проверка нет ли первой бомбы                    
+			if (this.tilefirst == false) {             //проверка - нет ли первой бомбы                    
 				this.clear();                                                                                       
 				return;                                                    
 			}
@@ -229,7 +222,7 @@ class Saper {
 				let targetW = document.querySelectorAll(`[data-tile="${x-1},${y}"`)[0];
 				this.clickTile(targetW, `${x-1},${y}`);
 			}
-			if (x < this.boardSize - 1) {
+			if (x < this.size - 1) {
 				let targetE = document.querySelectorAll(`[data-tile="${x+1},${y}"`)[0];
 				this.clickTile(targetE, `${x+1},${y}`);
 			}
@@ -237,7 +230,7 @@ class Saper {
 				let targetN = document.querySelectorAll(`[data-tile="${x},${y-1}"]`)[0];
 				this.clickTile(targetN, `${x},${y-1}`);
 			}
-			if (y < this.boardSize - 1) {
+			if (y < this.size - 1) {
 				let targetS = document.querySelectorAll(`[data-tile="${x},${y+1}"]`)[0];
 				this.clickTile(targetS, `${x},${y+1}`);
 			}
@@ -246,16 +239,16 @@ class Saper {
 				let targetNW = document.querySelectorAll(`[data-tile="${x-1},${y-1}"`)[0];
 				this.clickTile(targetNW, `${x-1},${y-1}`);
 			}
-			if (x < this.boardSize - 1 && y < this.boardSize - 1) {
+			if (x < this.size - 1 && y < this.size - 1) {
 				let targetSE = document.querySelectorAll(`[data-tile="${x+1},${y+1}"`)[0];
 				this.clickTile(targetSE, `${x+1},${y+1}`);
 			}
 			
-			if (y > 0 && x < this.boardSize - 1) {
+			if (y > 0 && x < this.size - 1) {
 				let targetNE = document.querySelectorAll(`[data-tile="${x+1},${y-1}"]`)[0];
 				this.clickTile(targetNE, `${x+1},${y-1}`);
 			}
-			if (x > 0 && y < this.boardSize - 1) {
+			if (x > 0 && y < this.size - 1) {
 				let targetSW = document.querySelectorAll(`[data-tile="${x-1},${y+1}"`)[0];   
 				this.clickTile(targetSW, `${x-1},${y+1}`);
 			}
@@ -264,7 +257,7 @@ class Saper {
 
 
 	endGame (tile) { //вызывается при проигрыше и отображает сообщение о поражении, а также показывает все бомбы на поле
-		this.endscreen.innerHTML = this.endscreenContent.loose;
+		this.endscreen.innerHTML = this.endscreenContent.lose;
 		this.endscreen.classList.add('show');
 		this.gameOver = true;
 		this.tiles.forEach(tile => {
