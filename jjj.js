@@ -11,6 +11,7 @@ class Saper {
 		this.tileSize = 50;        //размер плиток
 
 		this.board = document.querySelector('.board'); //переменная содержащая ссылку на элемент - доску 
+		console.log(typeof this.tiles);
 		this.tiles; //массив всех плиток (содержит координаты)
 
 		this.restartBtn = document.querySelector('.minesweeper-btn'); //кнопка (Переиграть)  
@@ -28,9 +29,9 @@ class Saper {
 		this.numbers = [];   //массив цифр
 		this.numberColors = ['#3498db', '#2ecc71', '#e74c3c', '#9b59b6', '#f1c40f', '#1abc9c', '#34495e', '#7f8c8d',]; //цвета цифр
 		this.endscreenContent = {win: '<span>А ты хорош(а)!</span>', lose: 'Вы были подорваны('};
-
+		
 		this.gameOver = false;
-
+		
 		this.tilefirst = false;  //для проверки первого блока
 		//время
 		this.minutesBlock = document.querySelector('.js-minutes');
@@ -162,7 +163,7 @@ class Saper {
 			if (!dataNum) dataNum = 0;
 			tile.setAttribute('data-num', dataNum + 1);
 		});
-
+		
 		if (this.bombs.length < 3) this.setup();  //перезапускает генерацию поля, если количество бомб меньше 3
 	}
 
@@ -192,7 +193,7 @@ class Saper {
 				return;                                                    
 			}
 			this.endGame(tile);
-		} 
+		}
 		else {
 			this.tilefirst = true;
 			let num = tile.getAttribute('data-num');
@@ -205,16 +206,12 @@ class Saper {
 				}, 100);
 				return;
 			}
-			
 			this.checkTile(tile, coordinate);
 		}
 		tile.classList.add('tile--checked');
 	}
 
-
-
 	checkTile (tile, coordinate) {  //проверяет соседние плитки и открывает их, если они не являются бомбами или числами
-		
 		let coords = coordinate.split(',');
 		let x = parseInt(coords[0]);
 		let y = parseInt(coords[1]);
@@ -257,7 +254,6 @@ class Saper {
 		}, 10);
 	}
 
-
 	endGame (tile) { //вызывается при проигрыше и отображает сообщение о поражении, а также показывает все бомбы на поле
 		this.endscreen.innerHTML = this.endscreenContent.lose;
 		this.endscreen.classList.add('show');
@@ -284,9 +280,6 @@ class Saper {
 			if (this.size == 8 && this.bombFrequency == 0.1 && (this.easyEightMinutes > this.minutes || (this.easyEightMinutes == this.minutes && this.easyEightSeconds > this.seconds) || (this.easyEightMinutes == 0 && this.easyEightSeconds == 0))){
 				this.easyEightMinutes = this.minutes;
 				this.easyEightSeconds = this.seconds;
-				console.log(this.easyEightMinutes);
-				console.log(this.easyEightSeconds);
-				console.log(155);
 			}
 			if (this.size == 8 && this.bombFrequency == 0.2 && (this.normalEightMinutes > this.minutes || (this.normalEightMinutes == this.minutes && this.normalEightSeconds > this.seconds) || (this.normalEightMinutes == 0 && this.normalEightSeconds == 0))){
 				this.normalEightMinutes = this.minutes;
