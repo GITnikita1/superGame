@@ -11,7 +11,7 @@ class Saper {
 		this.tileSize = 50;        //размер плиток
 
 		this.board = document.querySelector('.board'); //переменная содержащая ссылку на элемент - доску 
-		console.log(typeof this.tiles);
+	
 		this.tiles; //массив всех плиток (содержит координаты)
 
 		this.restartBtn = document.querySelector('.minesweeper-btn'); //кнопка (Переиграть)  
@@ -88,9 +88,9 @@ class Saper {
 		this.gameOver = false;
 		this.bombs = [];
 		this.numbers = [];
-		this.endscreen.innerHTML = '';
-		this.endscreen.classList.remove('show');
-		this.tiles.forEach(tile => {
+		this.endscreen.innerHTML = ''; //пустой текст
+		this.endscreen.classList.remove('show'); //удаляет класс 
+		this.tiles.forEach(tile => {  //перебор и удаление всех плиток
 			tile.remove();
 		});
 		this.tilefirst = false;
@@ -126,10 +126,8 @@ class Saper {
 				if (x < this.size - 1) this.numbers.push(`${x+1},${y}`);
 				if (y > 0) this.numbers.push(`${x},${y-1}`);
 				if (y < this.size - 1) this.numbers.push(`${x},${y+1}`);
-				
 				if (x > 0 && y > 0) this.numbers.push(`${x-1},${y-1}`);
 				if (x < this.size - 1 && y < this.size - 1) this.numbers.push(`${x+1},${y+1}`);
-				
 				if (y > 0 && x < this.size - 1) this.numbers.push(`${x+1},${y-1}`);
 				if (x > 0 && y < this.size - 1) this.numbers.push(`${x-1},${y+1}`);
 			}
@@ -155,12 +153,14 @@ class Saper {
 				
 			});
 		}); 
-
-		this.numbers.forEach(num => {
-			let coords = num.split(',');
-			let tile = document.querySelectorAll(`[data-tile="${parseInt(coords[0])},${parseInt(coords[1])}"]`)[0];
+		//определяем значение цифр 
+		//массив numbers может иметь несколько одинаковых значений
+		this.numbers.forEach(num => { //num - две координаты (x,y)
+			let coords = num.split(',');   //split разделяет строку num на пополам с помощбю ','. Теперь coords - массив из 2-х переменных x и y 
+			let tile = document.querySelectorAll(`[data-tile="${parseInt(coords[0])},${parseInt(coords[1])}"]`)[0];  //parseInt преобразует строку в число // мы записываем значения в tile т.к. это новый tile
+			//dataNum - наша будущая цифра
 			let dataNum = parseInt(tile.getAttribute('data-num'));
-			if (!dataNum) dataNum = 0;
+			if (!dataNum) dataNum = 0;  //это возможно при первом запуске верхней строчки, которая вернёт undefined
 			tile.setAttribute('data-num', dataNum + 1);
 		});
 		
@@ -256,7 +256,7 @@ class Saper {
 
 	endGame (tile) { //вызывается при проигрыше и отображает сообщение о поражении, а также показывает все бомбы на поле
 		this.endscreen.innerHTML = this.endscreenContent.lose;
-		this.endscreen.classList.add('show');
+		this.endscreen.classList.add('show'); //добавляет класс в элемент endscreen
 		this.gameOver = true;
 		this.tiles.forEach(tile => {
 			let coordinate = tile.getAttribute('data-tile');
@@ -316,7 +316,7 @@ class Saper {
 			//выше проверка на лучшие результаты
 			clearInterval(this.interval);
 			this.endscreen.innerHTML = this.endscreenContent.win;
-			this.endscreen.classList.add('show');
+			this.endscreen.classList.add('show'); //добавляет класс в элемент endscreen
 			this.gameOver = true;
 		}
 	}
