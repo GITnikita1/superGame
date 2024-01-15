@@ -36,7 +36,7 @@ class Saper {
 		this.minutesBlock = document.querySelector('.js-minutes');
 		this.secondsBlock = document.querySelector('.js-seconds');
 
-		this.interval;
+		this.interval; //переменная отвечающая за интервал времени вызова функции, она используется, чтобы делать остановки clearInterval(this.interval); если бы этого не было бы то можно было бы её не использовать
 		this.minutes = 0;
 		this.seconds = 0;
 		this.tileTime = false;
