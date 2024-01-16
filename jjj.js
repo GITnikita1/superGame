@@ -214,40 +214,38 @@ class Saper {
 		let x = parseInt(coords[0]);
 		let y = parseInt(coords[1]);
 		
-		setTimeout(() => {
+		setTimeout(() => { //вызывается один раз через 10 миллисекунд
 			if (x > 0) {
-				let targetW = document.querySelectorAll(`[data-tile="${x-1},${y}"`)[0];
-				this.clickTile(targetW, `${x-1},${y}`);
+				let targetW = document.querySelectorAll(`[data-tile="${x-1},${y}"]`)[0];
+				this.clickTile(targetW);
 			}
 			if (x < this.size - 1) {
-				let targetE = document.querySelectorAll(`[data-tile="${x+1},${y}"`)[0];
-				this.clickTile(targetE, `${x+1},${y}`);
+				let targetE = document.querySelectorAll(`[data-tile="${x+1},${y}"]`)[0];
+				this.clickTile(targetE);
 			}
 			if (y > 0) {
 				let targetN = document.querySelectorAll(`[data-tile="${x},${y-1}"]`)[0];
-				this.clickTile(targetN, `${x},${y-1}`);
+				this.clickTile(targetN);
 			}
 			if (y < this.size - 1) {
 				let targetS = document.querySelectorAll(`[data-tile="${x},${y+1}"]`)[0];
-				this.clickTile(targetS, `${x},${y+1}`);
+				this.clickTile(targetS);
 			}
-			
 			if (x > 0 && y > 0) {
-				let targetNW = document.querySelectorAll(`[data-tile="${x-1},${y-1}"`)[0];
-				this.clickTile(targetNW, `${x-1},${y-1}`);
+				let targetNW = document.querySelectorAll(`[data-tile="${x-1},${y-1}"]`)[0];
+				this.clickTile(targetNW);
 			}
 			if (x < this.size - 1 && y < this.size - 1) {
-				let targetSE = document.querySelectorAll(`[data-tile="${x+1},${y+1}"`)[0];
-				this.clickTile(targetSE, `${x+1},${y+1}`);
+				let targetSE = document.querySelectorAll(`[data-tile="${x+1},${y+1}"]`)[0];
+				this.clickTile(targetSE);
 			}
-			
 			if (y > 0 && x < this.size - 1) {
 				let targetNE = document.querySelectorAll(`[data-tile="${x+1},${y-1}"]`)[0];
-				this.clickTile(targetNE, `${x+1},${y-1}`);
+				this.clickTile(targetNE);
 			}
 			if (x > 0 && y < this.size - 1) {
-				let targetSW = document.querySelectorAll(`[data-tile="${x-1},${y+1}"`)[0];   
-				this.clickTile(targetSW, `${x-1},${y+1}`);
+				let targetSW = document.querySelectorAll(`[data-tile="${x-1},${y+1}"]`)[0];   
+				this.clickTile(targetSW);
 			}
 		}, 10);
 	}
@@ -324,7 +322,7 @@ let obj = new Saper();
 obj.setup();  //вызывается для начала игры и устанавливает игровое поле
 //addEventListener(действие, функция что будет происходить)
 obj.restartBtn.addEventListener('click', function(e) { //При нажатии на кнопку перезапуска вызывается функция `clear`, т.е. начинается новая игра
-	e.preventDefault();       //недаёт всплывать контекстеому меню при нажатии правой кнопи мыши                                                                
+	e.preventDefault();       //не даёт всплывать контекстному меню при нажатии правой кнопи мыши                                                                
 	obj.clear();
 });
 
@@ -347,7 +345,6 @@ obj.boardSizeBtn3.addEventListener('click', function() { //При изменен
 //value - частота появления бомб (НО ЭТО ТОЛЬКО В ЭТОМ СЛУЧАЕ)
 obj.difficultyBtns.forEach(btn => { //При нажатии на кнопку выбора сложности вызывается функция `clear` и изменяется частота появления бомб
 	btn.addEventListener('click', function() {
-		console.log(this.value);
 		obj.bombFrequency = this.value;
 		obj.clear();
 	});
