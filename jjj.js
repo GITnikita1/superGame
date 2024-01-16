@@ -156,7 +156,7 @@ class Saper {
 		//определяем значение цифр 
 		//массив numbers может иметь несколько одинаковых значений
 		this.numbers.forEach(num => { //num - две координаты (x,y)
-			let coords = num.split(',');   //split разделяет строку num на пополам с помощбю ','. Теперь coords - массив из 2-х переменных x и y 
+			let coords = num.split(',');   //split разделяет строку num в месте постановки ','. Теперь coords - массив из 2-х переменных x и y 
 			let tile = document.querySelectorAll(`[data-tile="${parseInt(coords[0])},${parseInt(coords[1])}"]`)[0];  //parseInt преобразует строку в число // мы записываем значения в tile т.к. это новый tile
 			//dataNum - наша будущая цифра
 			let dataNum = parseInt(tile.getAttribute('data-num'));
@@ -167,10 +167,9 @@ class Saper {
 		if (this.bombs.length < 3) this.setup();  //перезапускает генерацию поля, если количество бомб меньше 3
 	}
 
-
 	flag (tile) { //позволяет устанавливать или снимать флаг на плитке
 		if (this.gameOver) return;
-		if (!tile.classList.contains('tile--checked')) {
+		if (!tile.classList.contains('tile--checked')) { //contains определяет есть ли класс '...' у tile  (значения bool)
 			if (!tile.classList.contains('tile--flagged')) {
 				tile.innerHTML = '🚩';                                     
 				tile.classList.add('tile--flagged');
@@ -181,7 +180,6 @@ class Saper {
 			}
 		}
 	}
-
 
 	clickTile (tile) {   //обрабатывает клик по плитке и проверяет, является ли плитка бомбой или числом
 		if (this.gameOver) return;
@@ -330,39 +328,21 @@ obj.restartBtn.addEventListener('click', function(e) { //При нажатии �
 	obj.clear();
 });
 
-
-
-
-//value - размер поля
-// obj.boardSizeBtn.addEventListener('change', function() { //При изменении значения выбора размера поля вызывается функция `clear` и изменяется размер плиток
-// 	console.log(this.value);
-// 	obj.size = this.value;
-// 	obj.tileSize = 70 - (obj.size * 2); 
-// 	obj.clear();
-// });
 obj.boardSizeBtn1.addEventListener('click', function() { //При изменении значения выбора размера поля вызывается функция `clear` и изменяется размер плиток
-	console.log(this.value);
 	obj.size = this.value;
 	obj.tileSize = 70 - (obj.size * 2); 
 	obj.clear();
 });
 obj.boardSizeBtn2.addEventListener('click', function() { //При изменении значения выбора размера поля вызывается функция `clear` и изменяется размер плиток
-	console.log(this.value);
 	obj.size = this.value;
 	obj.tileSize = 70 - (obj.size * 2); 
 	obj.clear();
 });
 obj.boardSizeBtn3.addEventListener('click', function() { //При изменении значения выбора размера поля вызывается функция `clear` и изменяется размер плиток
-	console.log(this.value);
 	obj.size = this.value;
 	obj.tileSize = 70 - (obj.size * 2); 
 	obj.clear();
 });
-
-
-
-
-
 
 //value - частота появления бомб (НО ЭТО ТОЛЬКО В ЭТОМ СЛУЧАЕ)
 obj.difficultyBtns.forEach(btn => { //При нажатии на кнопку выбора сложности вызывается функция `clear` и изменяется частота появления бомб
@@ -387,8 +367,6 @@ obj.theBest.addEventListener('click', function() {
 	"Поле 16х16, сложно - " + obj.hardSixteenMinutes + ":" + obj.hardSixteenSeconds);
 	}
 })
-
-
 
 //обработка события закрытия страницы
 window.onunload = function() {
