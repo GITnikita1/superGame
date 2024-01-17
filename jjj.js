@@ -150,7 +150,6 @@ class Saper {
 					this.tileTime = true;
 				}
 				this.clickTile(tile);
-				
 			});
 		}); 
 		//определяем значение цифр 
