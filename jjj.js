@@ -170,7 +170,7 @@ class Saper {
 		if (this.gameOver) return;
 		if (!tile.classList.contains('tile--checked')) { //contains определяет есть ли класс '...' у tile  (значения bool)
 			if (!tile.classList.contains('tile--flagged')) {
-				tile.innerHTML = '🚩';                                     
+				tile.innerHTML = '🚩';                                    
 				tile.classList.add('tile--flagged');
 			}
 			else {
