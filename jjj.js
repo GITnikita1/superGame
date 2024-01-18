@@ -116,8 +116,8 @@ class Saper {
 		
 		let x = 0;
 		let y = 0;
-		this.tiles.forEach((tile) => {          //forEach вызывает для каждой плитки функцию и смотрит где бомбы, а где цифры  (tile, i)
-			tile.setAttribute('data-tile', `${x},${y}`); //устанавливаем атрибут data-tile и приравниваем его ккоординатам x и y
+		this.tiles.forEach((tile) => {          //forEach вызывает для каждой плитки функцию и смотрит где бомбы, а где цифры
+			tile.setAttribute('data-tile', `${x},${y}`); //устанавливаем атрибут data-tile и приравниваем ему координаты x и y
 			
 			let random_boolean = Math.random() < this.bombFrequency;
 			if (random_boolean) {
