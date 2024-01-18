@@ -158,7 +158,7 @@ body{
 	color: var(--osnov);
 	font-weight: bold;		
 }
-.settings input[type=radio] + label  {
+.settings input[type=radio] + label  { /* + это первый сестринский элемент*/
 	margin: 12px 14px 12px 22px;
 }
 .settings input[type=radio] + label:before {
